@@ -1,0 +1,9 @@
+<div class="slidecontainer">
+    <input
+            type="range"
+            [min]="minValue"
+            [max]="maxValue"
+            [value]="currentValue"
+            (change)="onInput($event.target.value)"
+            class="slider">
+</div>
