@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ListComponent} from './components/list/list.component';
 import {SliderComponent} from './components/slider/slider.component';
+import { IntroComponent } from './components/intro/intro.component';
 
 const routes: Routes = [
     {
@@ -17,7 +18,8 @@ const routes: Routes = [
     declarations: [
         AppComponent,
         ListComponent,
-        SliderComponent
+        SliderComponent,
+        IntroComponent
     ],
     imports: [
         BrowserModule,

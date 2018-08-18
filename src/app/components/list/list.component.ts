@@ -19,8 +19,6 @@ export class ListComponent implements OnInit, OnDestroy {
 
     private playingAudios = new Map<string, HTMLMediaElement>();
 
-    public introVisible = true;
-
     getVolume(item: Sound): number {
         return item.volume / 100;
     }
@@ -37,6 +35,11 @@ export class ListComponent implements OnInit, OnDestroy {
 
         const files = [
             {
+                file: '414117_makape_fireplace-light.mp3',
+                label: 'Fireplace',
+                thumbnail: 'lennert-de-ryck-424344-unsplash.jpg',
+            },
+            {
                 file: 'heavy-rain-daniel_simon.mp3',
                 label: 'Rain',
                 thumbnail: 'max-bender-510413-unsplash.jpg',
@@ -45,6 +48,11 @@ export class ListComponent implements OnInit, OnDestroy {
                 file: 'Sea Waves-SoundBible.com-946156036.mp3',
                 label: 'Sea Waves',
                 thumbnail: 'mourad-saadi-314319-unsplash.jpg',
+            },
+            {
+                file: 'Perfect Thunder Storm-SoundBible.com-2056381765.mp3',
+                label: 'Thunderstorm',
+                thumbnail: 'sean-mcauliffe-12854-unsplash.jpg',
             },
             {
                 file: 'meadowlark_daniel-simion.mp3',
@@ -57,11 +65,6 @@ export class ListComponent implements OnInit, OnDestroy {
                 thumbnail: 'tsaiga-26245-unsplash.jpg',
             },
             {
-                file: 'Perfect Thunder Storm-SoundBible.com-2056381765.mp3',
-                label: 'Thunderstorm',
-                thumbnail: 'sean-mcauliffe-12854-unsplash.jpg',
-            },
-            {
                 file: 'Wind-Mark_DiAngelo-1940285615.mp3',
                 label: 'Wind',
                 thumbnail: 'randy-fath-736006-unsplash.jpg',
@@ -72,11 +75,15 @@ export class ListComponent implements OnInit, OnDestroy {
                 thumbnail: 'steve-bittinger-75582-unsplash.jpg',
             },
             {
+                file: '53380__eric5335__meadow-ambience.mp3',
+                label: 'Crickets',
+                thumbnail: 'jon-phillips-17573-unsplash.jpg',
+            },
+            {
                 file: 'On The Farm-SoundBible.com-278471533.mp3',
                 label: 'Farm',
                 thumbnail: 'patryk-sobczak-497-unsplash.jpg',
             },
-
         ];
 
         files.forEach(item => {
@@ -137,9 +144,5 @@ export class ListComponent implements OnInit, OnDestroy {
             const audio = this.playingAudios.get(item.file);
             audio.volume = this.getVolume(item);
         }
-    }
-
-    toggleIntro() {
-        this.introVisible = !this.introVisible;
     }
 }

@@ -1,23 +1,6 @@
-<div class="intro row" [ngClass]="{
-    'shrinked': !introVisible
-}">
-    <div class="col-lg-12">
-        <h1>
-            <b>5 minute chill.</b><br/><br/>
-            That's all it takes for anyone to get back up to speed, improve focus and boost productivity.
-            Give it a go. Pick your favorite sounds below and switch off from the world for 5 minutes.<br/><br/>
-            <small>Headphones recommended.</small>
-        </h1>
-
-        <div (click)="toggleIntro()" class="collapsable">
-            <span [ngClass]="{
-                'glyphicon-chevron-up': introVisible,
-                'glyphicon-chevron-down': !introVisible
-            }" class="glyphicon"></span>
-        </div>
-    </div>
+<div class="row">
+    <app-intro></app-intro>
 </div>
-
 
 <div class="row">
     <div *ngFor="let item of list"
