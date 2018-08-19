@@ -1,0 +1,26 @@
+.intro {
+  background: url('/assets/images/malte-wingen-381988-unsplash.jpg') center center;
+  background-size: cover;
+}
+
+h1 {
+  padding: 0;
+  margin: 100px 0;
+  line-height: 0.9;
+
+  small:first-of-type {
+    color: #b68508;
+    font-size: 40%;
+  }
+  small {
+    font-size: 45%;
+  }
+}
+
+@media (max-width: 992px) {
+  .intro {
+    background: #fdd13c; // For older browsers, that don't support background-gradient
+    background: radial-gradient(#fdd13c, #eabf3b);
+  }
+}
+

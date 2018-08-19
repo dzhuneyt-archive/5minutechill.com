@@ -1,0 +1,55 @@
+export const soundsData = [
+    {
+        file: '414117_makape_fireplace-light.mp3',
+        label: 'Fireplace',
+        thumbnail: 'lennert-de-ryck-424344-unsplash.jpg',
+    },
+    {
+        file: 'heavy-rain-daniel_simon.mp3',
+        label: 'Rain',
+        thumbnail: 'max-bender-510413-unsplash.jpg',
+        volume: 15,
+    },
+    {
+        file: 'Sea Waves-SoundBible.com-946156036.mp3',
+        label: 'Sea Waves',
+        thumbnail: 'mourad-saadi-314319-unsplash.jpg',
+    },
+    {
+        file: 'Perfect Thunder Storm-SoundBible.com-2056381765.mp3',
+        label: 'Thunderstorm',
+        thumbnail: 'sean-mcauliffe-12854-unsplash.jpg',
+    },
+    {
+        file: 'meadowlark_daniel-simion.mp3',
+        label: 'Birds',
+        thumbnail: 'ridham-nagralawala-181473-unsplash.jpg',
+        volume: 20,
+    },
+    {
+        file: 'rainforest_ambience-GlorySunz-1938133500.mp3',
+        label: 'Rainforest',
+        thumbnail: 'tsaiga-26245-unsplash.jpg',
+    },
+    {
+        file: 'Wind-Mark_DiAngelo-1940285615.mp3',
+        label: 'Wind',
+        thumbnail: 'randy-fath-736006-unsplash.jpg',
+    },
+    {
+        file: '73716__akacie__akacie-afw2007-09.mp3',
+        label: 'River',
+        thumbnail: 'steve-bittinger-75582-unsplash.jpg',
+    },
+    {
+        file: '53380__eric5335__meadow-ambience.mp3',
+        label: 'Crickets',
+        thumbnail: 'jon-phillips-17573-unsplash.jpg',
+        volume: 20,
+    },
+    {
+        file: 'On The Farm-SoundBible.com-278471533.mp3',
+        label: 'Farm',
+        thumbnail: 'patryk-sobczak-497-unsplash.jpg',
+    },
+];

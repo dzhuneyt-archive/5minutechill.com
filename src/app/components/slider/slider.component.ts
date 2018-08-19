@@ -3,7 +3,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 @Component({
     selector: 'app-slider-component',
     templateUrl: './slider.component.html',
-    styleUrls: ['./slider.component.css']
+    styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
     @Input() minValue = 0;

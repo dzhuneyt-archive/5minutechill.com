@@ -6,7 +6,7 @@
     <div *ngFor="let item of list"
          [class.is-playing]="item.isPlaying"
          [ngStyle]="{
-            'background-image': 'url('+getThumbnail(item)+')',
+            'background-image': 'url('+item.getThumbnail()+')',
             'background-size': 'cover',
             'background-position': 'center'
          }"
@@ -29,4 +29,8 @@
 
         <div>&nbsp;</div>
     </div>
+</div>
+
+<div class="row">
+    <app-footer></app-footer>
 </div>

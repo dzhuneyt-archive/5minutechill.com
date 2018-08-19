@@ -6,6 +6,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {ListComponent} from './components/list/list.component';
 import {SliderComponent} from './components/slider/slider.component';
 import { IntroComponent } from './components/intro/intro.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 
 const routes: Routes = [
     {
@@ -19,7 +21,9 @@ const routes: Routes = [
         AppComponent,
         ListComponent,
         SliderComponent,
-        IntroComponent
+        IntroComponent,
+        FooterComponent,
+        CookieConsentComponent
     ],
     imports: [
         BrowserModule,
