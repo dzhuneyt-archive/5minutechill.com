@@ -75,9 +75,18 @@ export class ListComponent implements OnInit, OnDestroy {
         this.elRef.detectChanges();
 
         if (environment.production) {
+            // Track a Google Analytics event
             (<any>window).gtag('event', 'played', {
                 event_category: 'sound',
                 event_label: item.label,
+            });
+
+            // 5minutechill - sound played conversion
+            (<any>window).gtag('event', 'conversion', {
+                'send_to': 'AW-837475263/nHwLCM7htpIBEL-3q48D',
+                'event_callback': () => {
+                    console.log('Google Ads conversion success');
+                },
             });
         }
     }
