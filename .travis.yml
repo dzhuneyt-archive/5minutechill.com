@@ -12,4 +12,5 @@ addons:
   chrome: stable
 
 script:
-  - npm run build
+  - npm run test:cli
+  - npm run build:prod
