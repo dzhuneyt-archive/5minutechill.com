@@ -14,3 +14,4 @@ jobs:
           paths:
             - "node_modules"
       - run: xvfb-run -a npm run test:cli
+      - run: xvfb-run -a npm run build
