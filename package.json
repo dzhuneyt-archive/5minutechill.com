@@ -6,8 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod",
-    "test": "ng test",
-    "test:cli": "ng test --watch=false --browsers=ChromeHeadless",
+    "test": "ng test --source-map=false",
+    "test:cli": "ng test --watch=false --browsers=ChromeHeadless --source-map=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

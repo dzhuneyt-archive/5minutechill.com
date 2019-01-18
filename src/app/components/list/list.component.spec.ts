@@ -1,7 +1,25 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ListComponent} from './list.component';
-import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {ChangeDetectorRef, NO_ERRORS_SCHEMA} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BackendService} from '../../backend.service';
+import {Meta, Title} from '@angular/platform-browser';
+import {Subject} from 'rxjs';
+
+class MockServices {
+  request() {
+    return new Subject<any>();
+  }
+
+  setTitle() {
+
+  }
+
+  addTag() {
+
+  }
+}
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -9,8 +27,28 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ListComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      declarations: [
+        ListComponent
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        {
+          provide: BackendService,
+          useClass: MockServices
+        },
+        {
+          provide: Title,
+          useClass: MockServices
+        },
+        {
+          provide: Meta,
+          useClass: MockServices
+        },
+        {
+          provide: ChangeDetectorRef,
+          useClass: MockServices
+        },
+      ],
     })
       .compileComponents();
   }));
