@@ -49,10 +49,9 @@ jobs:
             npm install -g --silent gh-pages@2.0.1
             git config user.email "circleci@circleci.com"
             git config user.name "circleci"
-      - run: ls dist/dist
+
+      # Required for GitHub pages to be serve-able over custom domain
       - run: echo "5minutechill.com" > dist/dist/CNAME
-      - run: ls dist/dist
-      - run: cat dist/dist/CNAME
       - run:
           name: Deploy docs to gh-pages branch
           command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --dist ./dist/dist
