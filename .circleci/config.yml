@@ -52,7 +52,7 @@ jobs:
       - run: ls dist/dist
       - run: echo "5minutechill.com" > dist/dist/CNAME
       - run: ls dist/dist
-      - run: cat /dist/dist/CNAME
+      - run: cat dist/dist/CNAME
       - run:
           name: Deploy docs to gh-pages branch
           command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --dist ./dist/dist
