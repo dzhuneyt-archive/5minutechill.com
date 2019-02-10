@@ -4,7 +4,6 @@ jobs:
   build:
     docker:
         - image: circleci/node:8-browsers
-
     steps:
       - checkout
       - restore_cache:
@@ -14,12 +13,11 @@ jobs:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: xvfb-run -a npm run build:prod
-  test:
-    working_directory: ~/my-project
+#      - run: xvfb-run -a npm run build:prod
+
+  tests:
     docker:
         - image: circleci/node:8-browsers
-
     steps:
       - checkout
       - restore_cache:
@@ -31,6 +29,23 @@ jobs:
             - "node_modules"
       - run: xvfb-run -a npm run test:cli
 
+  docs-build:
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+      - run: npm install --silent
+      - save_cache:
+          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - "node_modules"
+      - run: xvfb-run -a ng build --prod --output-path docs
+      - persist_to_workspace:
+          root: docs
+          paths: docs
+
 workflows:
   version: 2
   default_workflow:
@@ -40,6 +55,9 @@ workflows:
               branches:
                   ignore:
                     - gh-pages
-      - test:
+      - tests:
           requires:
             - build
+      - docs-build:
+          requires:
+            - tests
