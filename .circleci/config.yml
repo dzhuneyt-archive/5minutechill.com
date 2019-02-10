@@ -51,7 +51,7 @@ jobs:
             git config user.name "circleci"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --src docs --dist .
+          command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --src docs/** --dist .
 
 workflows:
   version: 2
