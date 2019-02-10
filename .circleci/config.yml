@@ -14,8 +14,9 @@ jobs:
           paths:
             - "node_modules"
       - run: xvfb-run -a npm run build:prod
+      - run: cp dist docs
       - persist_to_workspace:
-          root: dist
+          root: .
           paths: docs
 
   tests:

@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --prod",
+    "build:prod": "ng build --prod --no-progress",
     "test": "ng test --source-map=false",
     "test:cli": "ng test --watch=false --browsers=ChromeHeadless --source-map=false",
     "lint": "ng lint",
