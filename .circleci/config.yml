@@ -40,6 +40,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: docs
+      - add_ssh_keys:
+          fingerprints:
+            - "ab:54:38:1a:42:d1:27:d0:eb:a7:f4:de:dc:15:38:c3"
       - run:
           name: Install and configure dependencies
           command: |
