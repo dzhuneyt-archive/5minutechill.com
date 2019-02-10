@@ -49,7 +49,6 @@ jobs:
             npm install -g --silent gh-pages@2.0.1
             git config user.email "circleci@circleci.com"
             git config user.name "circleci"
-      - run: ls /tmp/workspace
       - run: ls ~/tmp/workspace/dist
       - run:
           name: Deploy docs to gh-pages branch
