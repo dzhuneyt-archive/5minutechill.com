@@ -17,7 +17,7 @@ jobs:
       - run: cp -r dist docs
       - persist_to_workspace:
           root: .
-          paths: docs
+          paths: dist
 
   tests:
     docker:
@@ -49,10 +49,10 @@ jobs:
             npm install -g --silent gh-pages@2.0.1
             git config user.email "circleci@circleci.com"
             git config user.name "circleci"
-      - run: ls docs
+      - run: ls dist
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --src docs/** --dist .
+          command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --src **/** --dist ./dist
 
 workflows:
   version: 2
