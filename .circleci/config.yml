@@ -52,7 +52,7 @@ jobs:
       - run: ls dist
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --src **/** --dist ./dist
+          command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --dist ./dist
 
 workflows:
   version: 2
