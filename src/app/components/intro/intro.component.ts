@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {randomSlogan} from '../../models/slogans.list';
 
 @Component({
   selector: 'app-intro',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntroComponent implements OnInit {
 
-  constructor() { }
+  public slogan = randomSlogan();
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

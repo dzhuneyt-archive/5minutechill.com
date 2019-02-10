@@ -3,6 +3,7 @@ import {Sound} from '../../models/sound.model';
 import {environment} from '../../../environments/environment';
 import {Meta, Title} from '@angular/platform-browser';
 import {BackendService} from '../../backend.service';
+import {randomSlogan} from '../../models/slogans.list';
 
 @Component({
   selector: 'app-list',
@@ -27,7 +28,8 @@ export class ListComponent implements OnInit, OnDestroy {
     this.populateSoundsList();
 
     this.title.setTitle('5 Minute Chill - Relaxing sounds for stress relief');
-    this.meta.addTag({name: 'description', 'content': 'Meditation you can fit in your lunch break.'}, true);
+
+    this.meta.addTag({name: 'description', 'content': randomSlogan()}, true);
   }
 
   ngOnDestroy() {
