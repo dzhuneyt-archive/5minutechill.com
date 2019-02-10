@@ -49,6 +49,7 @@ jobs:
             npm install -g --silent gh-pages@2.0.1
             git config user.email "circleci@circleci.com"
             git config user.name "circleci"
+      - run: ls .
       - run:
           name: Deploy docs to gh-pages branch
           command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --src docs/** --dist .
