@@ -39,7 +39,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: docs
+          at: dist
       - add_ssh_keys:
           fingerprints:
             - "ab:54:38:1a:42:d1:27:d0:eb:a7:f4:de:dc:15:38:c3"
@@ -49,6 +49,7 @@ jobs:
             npm install -g --silent gh-pages@2.0.1
             git config user.email "circleci@circleci.com"
             git config user.name "circleci"
+      - run: ls .
       - run: ls dist
       - run:
           name: Deploy docs to gh-pages branch
