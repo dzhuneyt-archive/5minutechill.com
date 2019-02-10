@@ -33,6 +33,23 @@ jobs:
             - "node_modules"
       - run: xvfb-run -a npm run test:cli
 
+  gh-pages-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: docs
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "circleci@circleci.com"
+            git config user.name "circleci"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist docs
+
 workflows:
   version: 2
   default_workflow:
@@ -45,3 +62,6 @@ workflows:
       - tests:
           requires:
             - build
+      - gh-pages-deploy:
+          requires:
+            - tests
