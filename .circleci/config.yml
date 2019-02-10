@@ -51,7 +51,7 @@ jobs:
             git config user.name "circleci"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist docs
+          command: gh-pages --dist .
 
 workflows:
   version: 2
