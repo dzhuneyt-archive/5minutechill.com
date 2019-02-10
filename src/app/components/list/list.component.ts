@@ -41,7 +41,7 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   private populateSoundsList(): void {
-    this.backend.request('/public/sounds.json').subscribe((soundsData: Sound[]) => {
+    this.backend.request('public/sounds.json').subscribe((soundsData: Sound[]) => {
       soundsData.forEach(item => {
         const audio = new Sound();
         audio.file = item.file;
