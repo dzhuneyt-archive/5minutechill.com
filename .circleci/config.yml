@@ -38,11 +38,13 @@ jobs:
   deploy:
     docker:
       - image: node:8.10.0
+    working_directory: ~/project
     steps:
       - checkout
       - attach_workspace:
           at: ~/workspace
-      - run: ls ~/workspace
+      - run: cp -R ~/workspace/dist ~/project/dist
+      - run: ls ~/project/dist
       - run:
           name: Deploy to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive
