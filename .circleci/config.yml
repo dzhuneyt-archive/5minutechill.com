@@ -54,7 +54,7 @@ jobs:
             - "node_modules"
       - run:
           name: Install mandatory Firebase dependencies
-          command: npm install -g tslint
+          command: npm install -g tslint typescript
       - run: export PATH="$PATH:~/workspace/node_modules/.bin"
       - run:
           name: Deploy to Firebase
