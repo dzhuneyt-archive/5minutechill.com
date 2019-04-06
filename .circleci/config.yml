@@ -53,6 +53,9 @@ jobs:
           paths:
             - "node_modules"
       - run:
+          name: Install mandatory Firebase dependencies
+          command: npm install -g tslint
+      - run:
           name: Deploy to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive
 
