@@ -35,28 +35,16 @@ jobs:
             - "node_modules"
       - run: xvfb-run -a npm run test:cli
 
-  gh-pages-deploy:
+  deploy:
     docker:
       - image: node:8.10.0
     steps:
       - checkout
       - attach_workspace:
           at: dist
-      - add_ssh_keys:
-          fingerprints:
-            - "ab:54:38:1a:42:d1:27:d0:eb:a7:f4:de:dc:15:38:c3"
       - run:
-          name: Install and configure dependencies
-          command: |
-            npm install -g --silent gh-pages@2.0.1
-            git config user.email "circleci@circleci.com"
-            git config user.name "circleci"
-
-      # Required for GitHub pages to be serve-able over custom domain
-      - run: echo "5minutechill.com" > dist/dist/CNAME
-      - run:
-          name: Deploy docs to gh-pages branch
-          command: gh-pages --dotfiles --message "[ci skip] GitHub Pages auto-deploy" --dist ./dist/dist
+          name: Deploy to Firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive
 
 workflows:
   version: 2
@@ -70,6 +58,11 @@ workflows:
       - tests:
           requires:
             - build
-      - gh-pages-deploy:
+      - deploy:
+          filters:
+              branches:
+                only:
+                  - master
           requires:
+            - build
             - tests

@@ -10,6 +10,7 @@
     "build:prod:watch": "ng build --prod --no-progress --watch",
     "test": "ng test --source-map=false",
     "test:cli": "ng test --watch=false --browsers=ChromeHeadless --source-map=false",
+    "deploy": "npm run build:prod && firebase deploy",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -37,6 +38,7 @@
     "@types/jasminewd2": "^2.0.6",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "firebase-tools": "^6.5.3",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
