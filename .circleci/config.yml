@@ -45,6 +45,12 @@ jobs:
           at: ~/workspace
       - run: cp -R ~/workspace/dist ~/project/dist
       - run: ls ~/project/dist
+      - restore_cache:
+          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+      - run: npm install --silent
+      - save_cache:
+          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
       - run:
           name: Deploy to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive
