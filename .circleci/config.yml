@@ -13,13 +13,13 @@ jobs:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: xvfb-run -a npm run build:prod
-
-      # Allow reusing the already built code in future jobs
-      - run: cp -r dist docs
-      - persist_to_workspace:
-          root: .
-          paths: dist
+#      - run: xvfb-run -a npm run build:prod
+#
+#      # Allow reusing the already built code in future jobs
+#      - run: cp -r dist docs
+#      - persist_to_workspace:
+#          root: .
+#          paths: dist
 
   tests:
     docker:
@@ -33,7 +33,7 @@ jobs:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: xvfb-run -a npm run test:cli
+#      - run: xvfb-run -a npm run test:cli
 
   deploy:
     docker:
@@ -41,7 +41,8 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: dist
+          at: ~/workspace
+      - run: ls ~/workspace
       - run:
           name: Deploy to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive
