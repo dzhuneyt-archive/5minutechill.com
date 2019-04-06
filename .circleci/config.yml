@@ -8,12 +8,12 @@ jobs:
       - checkout
       - restore_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm install --silent
+      - run: npm install --silent --no-audit
       - save_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: xvfb-run -a npm run build:prod
+      - run: npm run build:prod
 
       # Allow reusing the already built code in future jobs
       - run: cp -r dist docs
@@ -28,12 +28,12 @@ jobs:
       - checkout
       - restore_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm install --silent
+      - run: npm install --silent --no-audit
       - save_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-#      - run: xvfb-run -a npm run test:cli
+      - run: npm run test:cli
 
   deploy:
     docker:
@@ -47,7 +47,7 @@ jobs:
       - run: ls ~/project/dist
       - restore_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm install --silent
+      - run: npm install --silent --no-audit
       - save_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
