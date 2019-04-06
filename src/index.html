@@ -6,14 +6,28 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="//fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   <style type="text/css">
     html body {
       font-family: 'Poppins', sans-serif;
     }
   </style>
+
+  <script>
+    // Load Bootstrap CSS asynchronously
+    var bootstrapCss = document.createElement( "link" );
+    bootstrapCss.rel = "stylesheet";
+    bootstrapCss.crossOrigin = 'anonymous';
+    bootstrapCss.href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+    document.head.insertBefore( bootstrapCss, document.head.childNodes[ document.head.childNodes.length - 1 ].nextSibling );
+  </script>
+
+  <script>
+    // Load web fonts asynchronously
+    var fontsCSs = document.createElement( "link" );
+    fontsCSs.rel = "stylesheet";
+    fontsCSs.href = "//fonts.googleapis.com/css?family=Poppins";
+    document.head.insertBefore( fontsCSs, document.head.childNodes[ document.head.childNodes.length - 1 ].nextSibling );
+  </script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1704294-207"></script>
