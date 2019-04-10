@@ -6,6 +6,11 @@ jobs:
         - image: circleci/node:8-browsers
     steps:
       - checkout
+      - run:
+          command:  |
+            mkdir ~/.npm-global
+            npm config set prefix '~/.npm-global'
+            export PATH=~/.npm-global/bin:$PATH
       - restore_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
       - run: npm install --silent --no-audit && npm install -g tslint typescript
@@ -18,6 +23,7 @@ jobs:
 
       # Deploy to Firebase
       - run: export PATH="$PATH:~/workspace/node_modules/.bin"
+
       - run:
           name: Deploy to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive
