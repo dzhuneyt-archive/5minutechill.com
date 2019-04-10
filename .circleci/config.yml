@@ -8,53 +8,15 @@ jobs:
       - checkout
       - restore_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm install --silent --no-audit
-      - save_cache:
-          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-          paths:
-            - "node_modules"
-      - run: npm run build:prod
-
-      # Allow reusing the already built code in future jobs
-      - run: cp -r dist docs
-      - persist_to_workspace:
-          root: .
-          paths: dist
-
-  tests:
-    docker:
-        - image: circleci/node:8-browsers
-    steps:
-      - checkout
-      - restore_cache:
-          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm install --silent --no-audit
+      - run: npm install --silent --no-audit && npm install -g tslint typescript
       - save_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
       - run: npm run test:cli
+      - run: npm run build:prod
 
-  deploy:
-    docker:
-      - image: node:8.10.0
-    working_directory: ~/project
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/workspace
-      - run: cp -R ~/workspace/dist ~/project/dist
-      - run: ls ~/project/dist
-      - restore_cache:
-          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm install --silent --no-audit
-      - save_cache:
-          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-          paths:
-            - "node_modules"
-      - run:
-          name: Install mandatory Firebase dependencies
-          command: npm install -g tslint typescript
+      # Deploy to Firebase
       - run: export PATH="$PATH:~/workspace/node_modules/.bin"
       - run:
           name: Deploy to Firebase
@@ -64,17 +26,4 @@ workflows:
   version: 2
   default_workflow:
     jobs:
-      - build:
-          filters:
-              branches:
-                  ignore:
-                    - gh-pages
-      - tests
-      - deploy:
-          filters:
-              branches:
-                only:
-                  - master
-          requires:
-            - build
-            - tests
+      - build
