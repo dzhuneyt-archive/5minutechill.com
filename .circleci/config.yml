@@ -4,6 +4,9 @@ jobs:
   build:
     docker:
         - image: circleci/node:8-browsers
+    branches:
+      only:
+        - master
     steps:
       - checkout
       - run:
