@@ -21,6 +21,7 @@
             "assets": [
               "src/public/sounds.json",
               "src/favicon.ico",
+              "src/robots.txt",
               "src/assets"
             ],
             "styles": [
