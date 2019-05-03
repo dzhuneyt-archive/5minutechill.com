@@ -1,8 +1,10 @@
 <div class="slidecontainer">
     <input
+            aria-label="{{sliderId}}"
             type="range"
             [min]="minValue"
             [max]="maxValue"
+            [name]="sliderId"
             [value]="currentValue"
             (change)="onInput($event.target.value)"
             class="slider">
