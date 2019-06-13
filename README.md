@@ -10,3 +10,6 @@ Make sure you have Angular CLI installed and the latest NodeJS. Start the lite s
 
     npm run build:prod
     firebase deploy
+
+##CI status
+[![CircleCI](https://circleci.com/gh/Dzhuneyt/5minutechill.com/tree/master.svg?style=svg)](https://circleci.com/gh/Dzhuneyt/5minutechill.com/tree/master)
