@@ -4,19 +4,13 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:8-browsers
-      branches:
-        only:
-          - master
-      steps:
-        - run:
-            name: Deploy to Firebase
-            command: npx firebase deploy --token=$FIREBASE_TOKEN --non-interactive
+    steps:
+      - run:
+          name: Deploy to Firebase
+          command: npx firebase deploy --token=$FIREBASE_TOKEN --non-interactive
   build:
     docker:
         - image: circleci/node:8-browsers
-    branches:
-      only:
-        - master
     steps:
       - checkout
       - run:
@@ -39,4 +33,7 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - deploy
+      - deploy:
+          filters:
+            branches:
+              only: master
