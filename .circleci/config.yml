@@ -23,14 +23,9 @@ jobs:
     executor: nodejs
     steps:
       - checkout
-      - run:
-          command:  |
-            mkdir ~/.npm-global
-            npm config set prefix '~/.npm-global'
-            export PATH=~/.npm-global/bin:$PATH
       - restore_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm ci --silent --no-audit && sudo npm install -g tslint typescript
+      - run: npm ci --silent --no-audit
       - save_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
