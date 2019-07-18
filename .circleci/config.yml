@@ -51,7 +51,7 @@ workflows:
       - build
       - deploy:
           requires:
-            -build
+            - build
 #      - deploy:
 #          filters:
 #            branches:
