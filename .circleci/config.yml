@@ -3,7 +3,7 @@ version: 2.1
 executors:
   nodejs:
     docker:
-      - image: circleci/node:8-browserse
+      - image: circleci/node:8-browsers
     working_directory: /project
 
 jobs:
