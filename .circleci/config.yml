@@ -1,16 +1,24 @@
-version: 2
+version: 2.1
+
+executors:
+  nodejs:
+    docker:
+      - image: circleci/node:8-browserse
+    working_directory: /project
 
 jobs:
   deploy:
-    docker:
-      - image: circleci/node:8-browsers
+    executor: nodejs
     steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: /tmp/workspace
+      - run: ls /tmp/workspace
       - run:
           name: Deploy to Firebase
           command: npx firebase deploy --token=$FIREBASE_TOKEN --non-interactive
   build:
-    docker:
-        - image: circleci/node:8-browsers
+    executor: nodejs
     steps:
       - checkout
       - run:
@@ -27,6 +35,14 @@ jobs:
             - "node_modules"
       - run: npm run test:cli
       - run: npm run build:prod
+      # Persist the specified paths (workspace/echo-output) into the workspace for use in downstream job.
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
+          # taken to be the root directory of the workspace.
+          root: .
+          # Must be relative path from root
+          paths:
+            - dist
 
 workflows:
   version: 2
