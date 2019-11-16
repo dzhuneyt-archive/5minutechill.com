@@ -17,5 +17,7 @@ jobs:
       run: npm run test:cli
     - name: Production build
       run: npm run build:prod
+    - name: Fix permission issues
+      run: sudo chown -R $USER:$(id -gn $USER) /home/runner/.config
     - name: Deploy to Firebase
-      run: firebase deploy --token=${{ secrets.FIREBASE_TOKEN }} --non-interactive
+      run: npx firebase deploy --token=${{ secrets.FIREBASE_TOKEN }} --non-interactive
