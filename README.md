@@ -2,7 +2,7 @@
 
 The source code of the website [5 Minute Chill](http://5minutechill.com). Contributions are welcome.
 
-[![CircleCI](https://circleci.com/gh/Dzhuneyt/Website---5minutechill.com.svg?style=svg)](https://circleci.com/gh/Dzhuneyt/Website---5minutechill.com)
+![](https://github.com/Dzhuneyt/5minutechill.com/workflows/CI/badge.svg?branch=master)
 
 # Installation
 ## Local installation and development
