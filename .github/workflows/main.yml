@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
@@ -8,23 +8,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Install TypeScript and Firebase Tools
-      run: sudo npm install -g tslint typescript firebase-tools
+      - uses: actions/checkout@v1
+      - name: Install TypeScript and Firebase Tools
+        run: npm install -g tslint typescript firebase-tools pnpm
 
-    - uses: actions/cache@v1
-      id: cache
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
 
-    - name: Install dependencies
-      run: npm install --silent --no-audit
-    - name: Tests
-      run: npm run test:cli
-    - name: Production build
-      run: npm run build:prod
-    - name: Fix permission issues
-      run: sudo chown -R $USER:$(id -gn $USER) /home/runner/.config
-    - name: Deploy to Firebase
-      run: npx firebase deploy --token=${{ secrets.FIREBASE_TOKEN }} --non-interactive
+      # Install PNPM
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 6.0.2
+          run_install: true
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Tests
+        run: npm run test:cli
+      - name: Production build
+        run: npm run build:prod
+      - name: Fix permission issues
+        run: sudo chown -R $USER:$(id -gn $USER) /home/runner/.config
+      - name: Deploy to Firebase
+        run: npx firebase deploy --token=${{ secrets.FIREBASE_TOKEN }} --non-interactive
