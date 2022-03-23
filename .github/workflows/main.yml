@@ -24,15 +24,13 @@ jobs:
           version: 6.0.2
           run_install: true
 
-      - run: pnpm install -g tslint typescript firebase-tools
-      - name: Install dependencies
-        run: pnpm install
+      - run: pnpm install -g typescript firebase-tools
 
       - name: Tests
         run: npm run test:cli
       - name: Production build
         run: npm run build:prod
-      - name: Fix permission issues
-        run: sudo chown -R $USER:$(id -gn $USER) /home/runner/.config
+#      - name: Fix permission issues
+#        run: sudo chown -R $USER:$(id -gn $USER) /home/runner/.config
       - name: Deploy to Firebase
-        run: npx firebase deploy --token=${{ secrets.FIREBASE_TOKEN }} --non-interactive
+        run: pnpm dlx firebase deploy --token=${{ secrets.FIREBASE_TOKEN }} --non-interactive
